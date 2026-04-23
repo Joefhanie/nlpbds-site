@@ -1,54 +1,28 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { FaCode, FaGift, FaVideo } from "react-icons/fa";
 import { Footer } from "./components/footer";
 
 export default function Home() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   const services = [
     {
-      icon: "🌱",
-      title: "Growth Strategy",
+      icon: FaCode,
+      title: "Business Solutions (Software Development)",
       description:
-        "Data-backed roadmaps and market positioning that align your ambitions with real-world traction and measurable milestones.",
+        "Unlock the full potential of your business with our cutting-edge software development solutions. Tailored to address the unique needs of your enterprise, our business solutions are crafted to enhance efficiency, streamline operations, and keep you ahead in the competitive Philippine market.",
     },
     {
-      icon: "⚡",
-      title: "Platform Engineering",
+      icon: FaVideo,
+      title: "Digital Media, Audio, and Video Production",
       description:
-        "Scalable, resilient architectures and internal tooling that keep your teams shipping confidently and without friction.",
+        "Make a lasting impression with our top-notch digital media, audio, and video production services. From compelling visual content to engaging audio experiences, our team of seasoned professionals is dedicated to bringing your brand to life, ensuring a captivating and memorable presence in the digital realm.",
     },
     {
-      icon: "🎨",
-      title: "Design Systems",
+      icon: FaGift,
+      title: "Business and Corporate Merchandise",
       description:
-        "Consistent, accessible product interfaces with clear component libraries that accelerate iteration and delight users.",
-    },
-    {
-      icon: "📊",
-      title: "Analytics & Insights",
-      description:
-        "Instrumentation, dashboards, and KPI frameworks so you always know what's working and why.",
-    },
-    {
-      icon: "🔒",
-      title: "Security & Compliance",
-      description:
-        "Threat modelling, audit-ready controls, and security best practices baked into every layer of your stack.",
-    },
-    {
-      icon: "🚀",
-      title: "Delivery Enablement",
-      description:
-        "Agile cadences, transparent reporting, and weekly milestones aligned to clear business outcomes.",
+        "Stand out in the corporate world with our bespoke business and corporate merchandise. From branded promotional items to corporate gifts, we provide a range of customizable merchandise solutions that not only elevate your brand image but also leave a lasting impression on clients, partners, and stakeholders.",
     },
   ];
 
@@ -86,11 +60,12 @@ export default function Home() {
     <>
       {/* ── Navbar ─────────────────────────────────────────── */}
       <nav className={`navbar`}>
-        <a href="#" className="brand">
+        <a href="#home" className="brand">
           <Image src="/img/NLP Logo.png" alt="NegosyoLabPH Logo" width={100} height={40} />
         </a>
 
         <ul className="nav-links">
+          <li><a href="#home">Home</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#process">Process</a></li>
           <li><a href="#about">About</a></li>
@@ -102,29 +77,24 @@ export default function Home() {
 
       {/* ── Hero ───────────────────────────────────────────── */}
       <section className="hero-section" id="home">
-        <div className="hero-blob hero-blob-1" />
-        <div className="hero-blob hero-blob-2" />
+        <div className="hero-content">
 
-        <div className="hero-content text-center">
-
-          <h1 className="hero-title fade-up delay-100 mx-auto">
-            Growth-driven <br />
-            <span className="highlight">digital solutions</span>
-            <br /> that scale with you.
+          <h1 className="hero-title fade-up delay-100">
+            Simple steps to start and <br />  grow your business with <span className="highlight">NegosyoLab PH!</span>
           </h1>
 
-          <p className="hero-sub fade-up delay-200 mx-auto">
-            NegosyoLabPH Business Development Services partners with ambitious companies to design, build, and
-            optimise the platforms, products, and processes that power real
-            growth.
+          <p className="hero-sub fade-up delay-200">
+            NegosyoLab PH partners with Filipino SME business owners and ambitious entrepreneurs to test, innovate,
+            and develop successful ventures. We offer cutting-edge multimedia production and innovative business
+            systems to empower growth and streamline operations across the Philippines.
           </p>
 
-          <div className="hero-cta fade-up delay-300 justify-center">
+          <div className="hero-cta fade-up delay-300">
             <a href="#contact" className="btn-primary">
-              Start a Project →
+              Connect with us
             </a>
             <a href="#services" className="btn-outline">
-              Explore Services
+              Explore more
             </a>
           </div>
         </div>
@@ -133,13 +103,13 @@ export default function Home() {
       {/* ── Services ───────────────────────────────────────── */}
       <section className="section" id="services">
         <div className="section-inner">
-          <p className="section-label fade-up">What we do</p>
+          <p className="section-label fade-up">What We Do</p>
           <h2 className="section-title fade-up delay-100">
-            Focused services with measurable impact
+            Our Services
           </h2>
           <p className="section-sub fade-up delay-200">
-            From strategy through to shipping, we provide the expertise your
-            team needs without the overhead of a large agency.
+            Explore our core offerings designed to strengthen your business and
+            elevate your brand presence.
           </p>
 
           <div className="services-grid">
@@ -149,7 +119,9 @@ export default function Home() {
                 className="service-card fade-up"
                 style={{ animationDelay: `${200 + i * 80}ms` }}
               >
-                <div className="service-icon">{s.icon}</div>
+                <div className="service-icon">
+                  <s.icon />
+                </div>
                 <h3>{s.title}</h3>
                 <p>{s.description}</p>
               </article>
@@ -246,9 +218,9 @@ export default function Home() {
 
       {/* ── Footer ─────────────────────────────────────────── */}
       <Footer />
-      <footer className="site-footer">
-        <p style={{ textAlign: "center" }}>© 2026 NegosyoLabPH Business Development Services. Strategy, systems &amp; software delivery.</p>
-      </footer>
+        <footer className="site-footer text-center">
+          <p>© 2026 NLP Business Development Services.</p>
+        </footer>
     </>
   );
 }

@@ -3,20 +3,19 @@ import { FaFacebook, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const footerLinks = {
   services: [
-    { label: 'Market Research', href: '#services' },
-    { label: 'Strategic Planning', href: '#services' },
-    { label: 'Sales Optimization', href: '#services' },
-    { label: 'Financial Advisory', href: '#services' },
+    { label: 'Business Solutions', href: '#services' },
+    { label: 'Digital Media, Audio, and Video Production', href: '#services' },
+    { label: 'Business and Corporate Merchandise', href: '#services' },
   ],
   company: [
-    { label: 'About Us', href: '#about' },
-    { label: 'Our Team', href: '#about' },
-    { label: 'Careers', href: '#' },
+    { label: 'Home', href: '#home' },
+    { label: 'Process', href: '#process' },
+    { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
   ],
   legal: [
-    { label: 'Privacy Policy', href: '#' },
-    { label: 'Terms of Service', href: '#' },
+    { label: 'Get in Touch', href: '#contact' },
+    { label: 'Email Us', href: 'mailto:hello@negosyolabph.com' },
   ],
 };
 
