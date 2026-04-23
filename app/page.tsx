@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { FaCode, FaGift, FaVideo } from "react-icons/fa";
 import { Footer } from "./components/footer";
 
@@ -28,46 +29,109 @@ export default function Home() {
 
   const clients = [
     {
-      title: "Luma Health",
+      title: "ArmonyX Gym",
       description:
-        "End-to-end product advisory and platform modernization for faster feature delivery and stronger operational visibility.",
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
-      title: "SariMart Group",
+      title: "Just Bump",
       description:
-        "Digital content and campaign systems that improved customer engagement and accelerated lead conversion.",
-    },
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",},
     {
-      title: "NorthPeak Logistics",
+      title: "Just Remember",
       description:
-        "Workflow automation and analytics dashboards that reduced manual overhead and improved reporting accuracy.",
-    },
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",},
     {
-      title: "Asteria Foods",
+      title: "ERMS",
       description:
-        "Brand media production and corporate asset rollout that strengthened consistency across all customer touchpoints.",
-    },
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",},
   ];
 
-  const values = [
-    { icon: "🌿", title: "Clarity", description: "Plain language, honest timelines, no jargon." },
-    { icon: "🤝", title: "Partnership", description: "We succeed when you succeed — full stop." },
-    { icon: "🔬", title: "Rigour", description: "Evidence-based decisions at every stage." },
-    { icon: "🌍", title: "Impact", description: "Results you can measure, not promises you can't." },
+  const careers = [
+    {
+      title: "Software Developer Intern",
+      description:
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",},
+    {
+      title: "QA Tester Intern",
+      description:
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",},
+    {
+      title: "Multimedia Production Intern",
+      description:
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",},
   ];
+
+  const [aboutSlideIndex, setAboutSlideIndex] = useState(0);
+  const [careerSlideIndex, setCareerSlideIndex] = useState(0);
+  const [aboutSlides, setAboutSlides] = useState<{ src: string; alt: string }[]>([]);
+  const [careerSlides, setCareerSlides] = useState<{ src: string; alt: string }[]>([]);
+
+  useEffect(() => {
+    const loadAboutSlides = async () => {
+      const response = await fetch('/api/about-slides');
+      if (!response.ok) {
+        return;
+      }
+
+      const data = (await response.json()) as { slides?: { src: string; alt: string }[] };
+      setAboutSlides(data.slides ?? []);
+    };
+
+    loadAboutSlides();
+  }, []);
+
+  useEffect(() => {
+    const loadCareerSlides = async () => {
+      const response = await fetch('/api/career-slides');
+      if (!response.ok) {
+        return;
+      }
+
+      const data = (await response.json()) as { slides?: { src: string; alt: string }[] };
+      setCareerSlides(data.slides ?? []);
+    };
+
+    loadCareerSlides();
+  }, []);
+
+  useEffect(() => {
+    if (!aboutSlides.length) {
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setAboutSlideIndex((prev) => (prev + 1) % aboutSlides.length);
+    }, 10000);
+
+    return () => clearInterval(timer);
+  }, [aboutSlides.length]);
+
+  useEffect(() => {
+    if (!careerSlides.length) {
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setCareerSlideIndex((prev) => (prev + 1) % careerSlides.length);
+    }, 6000);
+
+    return () => clearInterval(timer);
+  }, [careerSlides.length]);
 
   return (
     <>
       {/* ── Navbar ─────────────────────────────────────────── */}
       <nav className={`navbar`}>
         <a href="#home" className="brand">
-          <Image src="/img/NLP Logo.png" alt="NegosyoLabPH Logo" width={100} height={40} />
+          <Image src="/img/NLP LEGAL.png" alt="NegosyoLabPH Logo" width={150} height={90} />
         </a>
 
         <ul className="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#clients">Clients</a></li>
+          <li><a href="#careers">Careers</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -77,10 +141,11 @@ export default function Home() {
 
       {/* ── Hero ───────────────────────────────────────────── */}
       <section className="hero-section" id="home">
+        <div className="hero-layout">
         <div className="hero-content">
 
           <h1 className="hero-title fade-up delay-100">
-            Simple steps to start and <br />  grow your business with <span className="highlight">NegosyoLab PH!</span>
+            Simple steps to start and<br />grow your business with <span className="highlight">NegosyoLab PH!</span>
           </h1>
 
           <p className="hero-sub fade-up delay-200">
@@ -97,6 +162,16 @@ export default function Home() {
               Explore more
             </a>
           </div>
+        </div>
+        <div className="hero-visual fade-in delay-200" aria-hidden="true">
+          <Image
+            src="/img/bg_1.png"
+            alt="Business growth illustration"
+            fill
+            priority
+            className="hero-visual-image"
+          />
+        </div>
         </div>
       </section>
 
@@ -145,7 +220,7 @@ export default function Home() {
             We partner with companies across industries to build systems,
             content, and strategies that drive measurable results.
           </p>
-
+          
           <div className="client-grid">
             {clients.map((client, i) => (
               <a
@@ -163,40 +238,130 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Why us ─────────────────────────────────────────── */}
-      <section className="section why-section" id="about">
+      {/* ── Careers ────────────────────────────────────────── */}
+      <section className="section careers-section" id="careers">
         <div className="section-inner">
-          <p className="section-label fade-up">Why NegosyoLabPH</p>
-          <h2 className="section-title fade-up delay-100">
-            Principles we refuse to compromise on
-          </h2>
-          <p className="section-sub fade-up delay-200">
-            We believe good work speaks for itself — and that your confidence in
-            us should be earned, not assumed.
-          </p>
-
-          <div className="values-grid">
-            {values.map((v, i) => (
-              <div
-                key={v.title}
-                className="value-card fade-up"
-                style={{ animationDelay: `${200 + i * 100}ms` }}
-              >
-                <div className="value-card-icon">{v.icon}</div>
-                <h3>{v.title}</h3>
-                <p>{v.description}</p>
-              </div>
-            ))}
+          <div className="careers-head">
+            <p className="careers-kicker fade-up">JOIN THE TEAM</p>
+            <h2 className="careers-title fade-up delay-100">
+              Career opportunities
+            </h2>
+            <p className="careers-text fade-up delay-200">
+              We&apos;re looking for people who enjoy solving real business problems,
+              working collaboratively, and creating work that makes a visible impact.
+            </p>
           </div>
 
-          {/* Testimonial */}
-          <div className="testimonial-card fade-up delay-500">
-            <blockquote>
-              &ldquo;NegosyoLabPH transformed the way our platform team operates.
-              Within 12 weeks we had shipped three features that had been
-              stalled for a year — and we finally understood why.&rdquo;
-            </blockquote>
-            <cite>— Jamie Reyes, CTO @ Luma Health</cite>
+          <div className="careers-layout">
+            <div className="careers-carousel fade-up delay-200">
+              <div className="careers-carousel-stage">
+                {careerSlides.map((slide, i) => (
+                  <div
+                    key={slide.src}
+                    className={`careers-slide${i === careerSlideIndex ? " active" : ""}`}
+                  >
+                    <Image
+                      src={slide.src}
+                      alt={slide.alt}
+                      fill
+                      sizes="(max-width: 900px) 100vw, 520px"
+                      style={{ objectFit: "cover", objectPosition: "center" }}
+                      className="careers-slide-image"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <div className="careers-dots" role="tablist" aria-label="Careers carousel">
+                {careerSlides.map((slide, i) => (
+                  <button
+                    key={slide.src}
+                    type="button"
+                    className={`careers-dot${i === careerSlideIndex ? " active" : ""}`}
+                    onClick={() => setCareerSlideIndex(i)}
+                    aria-label={`Show career slide ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="careers-copy">
+
+              <ul className="careers-list">
+                {careers.map((role, i) => (
+                  <li key={role.title} className="careers-list-item fade-up" style={{ animationDelay: `${250 + i * 90}ms` }}>
+                    <h3>{role.title}</h3>
+                    <p>{role.description}</p>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=nlpbussdevtservices@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="careers-apply fade-up delay-500"
+              >
+                Apply via email →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── About Us ───────────────────────────────────────── */}
+      <section className="section about-section" id="about">
+        <div className="section-inner about-layout">
+          <div className="about-copy">
+            <p className="about-kicker fade-up">WHAT WE DO</p>
+            <h2 className="about-title fade-up delay-100">Build, Innovate, and Succeed</h2>
+            <p className="about-text fade-up delay-200">
+              NegosyoLab PH is an innovative business laboratory dedicated to empowering
+              small and medium enterprises (SMEs) across the Philippines. We focus on
+              bridging the gap between traditional operations and technological progress,
+              providing modern solutions to enhance day-to-day business activities.
+            </p>
+
+            <h3 className="about-subtitle fade-up delay-300">Our Vision &amp; Mission</h3>
+            <p className="about-text fade-up delay-400">
+              Our vision is to build a modern Philippine business landscape where
+              technological barriers are removed, connections are strengthened, and
+              operations are seamless. Our team of specialists aims to provide the
+              best-in-class, timely solutions—ensuring you adopt the latest technologies
+              and are equipped to adjust to the demands of your craft.
+            </p>
+          </div>
+
+          <div className="about-carousel fade-up delay-200">
+            <div className="about-carousel-stage">
+              {aboutSlides.map((slide, i) => (
+                <div
+                  key={slide.src}
+                  className={`about-slide${i === aboutSlideIndex ? " active" : ""}`}
+                >
+                  <Image
+                    src={slide.src}
+                    alt={slide.alt}
+                    fill
+                    sizes="(max-width: 900px) 100vw, 520px"
+                    style={{ objectFit: "cover", objectPosition: "center" }}
+                    className="about-slide-image"
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="about-dots" role="tablist" aria-label="About carousel">
+              {aboutSlides.map((slide, i) => (
+                <button
+                  key={slide.src}
+                  type="button"
+                  className={`about-dot${i === aboutSlideIndex ? " active" : ""}`}
+                  onClick={() => setAboutSlideIndex(i)}
+                  aria-label={`Show slide ${i + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -205,13 +370,17 @@ export default function Home() {
       <section className="section" id="contact">
         <div className="section-inner">
           <div className="cta-block fade-up">
-            <h2>Ready to grow smarter?</h2>
+            <h2>Ready to grow your business smarter?</h2>
             <p>
-              Tell us about your challenge and we&apos;ll come back within one
-              business day with a clear picture of how we can help.
+              If your team needs software solutions, digital media production, or branded corporate merchandise, let&apos;s talk.
+              Share your goals and we&apos;ll help you map out the right next steps for your business.
             </p>
-            <a href="mailto:hello@negosyolabph.com" className="btn-cta">
-              hello@negosyolabph.com →
+             <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=nlpbussdevtservices@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-cta">
+              nlpbussdevtservices@gmail.com →
             </a>
           </div>
         </div>

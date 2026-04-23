@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaFacebook, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
+import Image from 'next/image';
 
 const footerLinks = {
   services: [
@@ -10,21 +10,16 @@ const footerLinks = {
   company: [
     { label: 'Home', href: '#home' },
     { label: 'Clients', href: '#clients' },
+    { label: 'Careers', href: '#careers' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
   ],
   legal: [
     { label: 'Get in Touch', href: '#contact' },
-    { label: 'Email Us', href: 'mailto:hello@negosyolabph.com' },
+    { label: 'Email Us', href:'https://mail.google.com/mail/?view=cm&fs=1&to=nlpbussdevtservices@gmail.com' },
+    { label: 'Facebook', href:'https://www.facebook.com/NegosyoLabPh' },
   ],
 };
-
-const socialLinks = [
-  { icon: FaFacebook, href: '#', label: 'Facebook' },
-  { icon: FaLinkedin, href: '#', label: 'LinkedIn' },
-  { icon: FaTwitter, href: '#', label: 'Twitter' },
-  { icon: FaInstagram, href: '#', label: 'Instagram' },
-];
 
 export function Footer() {
   return (
@@ -32,36 +27,22 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 flex items-center">
             <Link href="/" className="inline-block">
-              <span className="font-poppins text-2xl font-bold text-[#192436]">
-                Negosyo<span className="text-white">Lab</span>PH
-              </span>
+              <Image
+                src="/img/NLP LEGAL.png"
+                alt="NegosyoLabPH logo"
+                width={180}
+                height={72}
+                priority={false}
+                className="h-auto w-56 brightness-0 invert"
+              />
             </Link>
-            <p className="mt-4 text-sm leading-relaxed text-[#192436]/80">
-              Empowering Filipino businesses with strategic development
-              solutions for sustainable growth.
-            </p>
-            <div className="mt-6 flex items-center gap-3">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-[#192436]/10 text-[#192436]/80 transition-all hover:bg-[#192436] hover:text-[#99C83C]"
-                  >
-                    <Icon className="h-4 w-4" />
-                  </a>
-                );
-              })}
-            </div>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="font-poppins text-sm font-semibold uppercase tracking-wider text-[#192436]">
+            <h4 className="font-poppins text-sm font-semibold uppercase tracking-wider footer-link-title">
               Services
             </h4>
             <ul className="mt-6 space-y-3">
@@ -69,7 +50,7 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[#192436]/80 transition-colors hover:text-white"
+                    className="text-sm text-white/85 transition-colors hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -80,7 +61,7 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-poppins text-sm font-semibold uppercase tracking-wider text-[#192436]">
+            <h4 className="font-poppins text-sm font-semibold uppercase tracking-wider footer-link-title">
               Company
             </h4>
             <ul className="mt-6 space-y-3">
@@ -88,7 +69,7 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[#192436]/80 transition-colors hover:text-white"
+                    className="text-sm text-white/85 transition-colors hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -99,7 +80,7 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="font-poppins text-sm font-semibold uppercase tracking-wider text-[#192436]">
+            <h4 className="font-poppins text-sm font-semibold uppercase tracking-wider footer-link-title">
               Legal
             </h4>
             <ul className="mt-6 space-y-3">
@@ -107,7 +88,7 @@ export function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[#192436]/80 transition-colors hover:text-white"
+                    className="text-sm text-white/85 transition-colors hover:text-white"
                   >
                     {link.label}
                   </Link>
