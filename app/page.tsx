@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { Footer } from "./components/footer";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -244,16 +245,9 @@ export default function Home() {
       </section>
 
       {/* ── Footer ─────────────────────────────────────────── */}
+      <Footer />
       <footer className="site-footer">
-        <a href="#" className="footer-brand">
-          NegosyoLabPH <span className="brand-dot" />
-        </a>
-        <p style={{ margin: 0 }}>© 2026 NegosyoLabPH Business Development Services. Strategy, systems &amp; software delivery.</p>
-        <nav style={{ display: "flex", gap: "1.25rem" }}>
-          <a href="#services" style={{ color: "inherit", textDecoration: "none" }}>Services</a>
-          <a href="#process" style={{ color: "inherit", textDecoration: "none" }}>Process</a>
-          <a href="#contact" style={{ color: "inherit", textDecoration: "none" }}>Contact</a>
-        </nav>
+        <p style={{ textAlign: "center" }}>© 2026 NegosyoLabPH Business Development Services. Strategy, systems &amp; software delivery.</p>
       </footer>
     </>
   );
