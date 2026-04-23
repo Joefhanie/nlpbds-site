@@ -204,7 +204,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-section {
   position: relative;
   min-height: calc(100svh - 66px);
-  padding: 10.4rem clamp(1.2rem, 6vw, 4rem) 4.2rem; 
+  padding: 11.2rem clamp(1.2rem, 6vw, 4rem) 4.2rem;
   overflow: hidden; 
   background: linear-gradient(180deg, #f5f7ff 0%, #ffffff 100%);
 }

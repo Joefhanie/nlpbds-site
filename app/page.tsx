@@ -145,7 +145,8 @@ export default function Home() {
         <div className="hero-content">
 
           <h1 className="hero-title fade-up delay-100">
-            Simple steps to start and<br />grow your business with <span className="highlight">NegosyoLab PH!</span>
+            Simple steps to start and grow<br />
+            your business with <span className="highlight">NegosyoLab PH!</span>
           </h1>
 
           <p className="hero-sub fade-up delay-200">
