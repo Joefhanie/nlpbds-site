@@ -5,6 +5,7 @@
   --white:  #FFFFFF;
   --green:  #99C83C;
   --navy:   #192436;
+  --dark-bg: #403B39;
 
   --green-light: #b8df6c;
   --green-dim:   #7aab1e;
@@ -197,7 +198,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   font-size: 0.85rem;
   color: var(--white);
-  background: var(--navy);
+  background: #2c2927;
   padding: 0.55rem 1.3rem;
   border-radius: 100px;
   text-decoration: none;
@@ -216,7 +217,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: flex-start;
   justify-content: flex-start;
   padding: 8.4rem clamp(1.2rem, 6vw, 4rem) 6.2rem;
-  margin: 0 1rem;
+  margin: 3.5rem 1rem -4rem 1rem;
   overflow: hidden; 
 }
 
@@ -473,11 +474,37 @@ h1, h2, h3, h4, h5, h6 {
 
 .process-step {
   position: relative;
+  display: block;
   padding: 2rem 1.75rem 1.75rem;
   background: var(--surface);
   border-radius: 20px;
   border: 1px solid var(--border);
   overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.process-step:hover,
+.process-step:focus-visible {
+  border-color: #99C83C;
+  background: #ffffff;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.14);
+}
+
+.process-step:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.process-step:hover h3,
+.process-step:focus-visible h3 {
+  color: #99C83C;
+}
+
+.process-step:hover .process-step-num,
+.process-step:focus-visible .process-step-num {
+  color: rgba(153, 200, 60, 0.35);
 }
 .process-step-num {
   font-family: var(--font-poppins), sans-serif;
@@ -506,7 +533,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── Why us / Values ──────────────────────────────────────── */
 .why-section {
-  background: var(--navy);
+  background: var(--dark-bg);
   color: var(--white);
 }
 .why-section .section-label { color: var(--green-light); }
@@ -626,7 +653,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── Footer ───────────────────────────────────────────────── */
 .site-footer {
-  background: #403B39;
+  background: var(--dark-bg);
   color: rgba(255,255,255,0.45);
   padding: 1.5rem;
   font-size: 0.82rem;

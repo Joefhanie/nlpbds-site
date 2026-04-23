@@ -26,26 +26,26 @@ export default function Home() {
     },
   ];
 
-  const steps = [
+  const clients = [
     {
-      title: "Discover",
+      title: "Luma Health",
       description:
-        "We immerse ourselves in your business, auditing platforms, workflows, and goals to surface the highest-impact opportunities.",
+        "End-to-end product advisory and platform modernization for faster feature delivery and stronger operational visibility.",
     },
     {
-      title: "Design",
+      title: "SariMart Group",
       description:
-        "Our team maps a clear, phased implementation path — no surprises, no scope creep, just a practical plan you can trust.",
+        "Digital content and campaign systems that improved customer engagement and accelerated lead conversion.",
     },
     {
-      title: "Deliver",
+      title: "NorthPeak Logistics",
       description:
-        "We ship with weekly milestones and transparent reporting, so you always see progress and stay in control.",
+        "Workflow automation and analytics dashboards that reduced manual overhead and improved reporting accuracy.",
     },
     {
-      title: "Evolve",
+      title: "Asteria Foods",
       description:
-        "Post-launch we embed with your team to iterate, measure outcomes, and compound your early wins into lasting growth.",
+        "Brand media production and corporate asset rollout that strengthened consistency across all customer touchpoints.",
     },
   ];
 
@@ -67,7 +67,7 @@ export default function Home() {
         <ul className="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#process">Process</a></li>
+          <li><a href="#clients">Clients</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -130,33 +130,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Process ────────────────────────────────────────── */}
+      {/* ── Clients ────────────────────────────────────────── */}
       <section
         className="section"
-        id="process"
+        id="clients"
         style={{ background: "var(--surface)" }}
       >
         <div className="section-inner">
-          <p className="section-label fade-up">How we work</p>
+          <p className="section-label fade-up">Our Clients</p>
           <h2 className="section-title fade-up delay-100">
-            Practical collaboration from discovery to delivery
+            Trusted by growing businesses
           </h2>
           <p className="section-sub fade-up delay-200">
-            A clear, structured process so you always know the next step — and
-            why it matters.
+            We partner with companies across industries to build systems,
+            content, and strategies that drive measurable results.
           </p>
 
           <div className="process-steps">
-            {steps.map((step, i) => (
-              <div
-                key={step.title}
+            {clients.map((client, i) => (
+              <a
+                key={client.title}
+                href="#contact"
                 className="process-step fade-up"
                 style={{ animationDelay: `${200 + i * 100}ms` }}
               >
                 <span className="process-step-num">0{i + 1}</span>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </div>
+                <h3>{client.title}</h3>
+                <p>{client.description}</p>
+              </a>
             ))}
           </div>
         </div>
