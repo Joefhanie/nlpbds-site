@@ -16,9 +16,14 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "NegosyoLabPH Business Development Services — IT Solutions",
+  title: "NLPBDS",
   description:
     "NegosyoLabPH Business Development Services helps ambitious companies scale smarter with modern IT solutions, digital strategy, and clean systems.",
+  icons: {
+    icon: "/img/NLP LEGAL.png",
+    shortcut: "/img/NLP LEGAL.png",
+    apple: "/img/NLP LEGAL.png",
+  },
 };
 
 export default function RootLayout({
