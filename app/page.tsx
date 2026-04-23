@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -80,18 +81,12 @@ export default function Home() {
     { icon: "🌍", title: "Impact", description: "Results you can measure, not promises you can't." },
   ];
 
-  const stats = [
-    { value: "98%", label: "Client retention" },
-    { value: "60+", label: "Products launched" },
-    { value: "12 wks", label: "Avg. first release" },
-  ];
-
   return (
     <>
       {/* ── Navbar ─────────────────────────────────────────── */}
       <nav className={`navbar${scrolled ? " scrolled" : ""}`}>
         <a href="#" className="brand">
-          NegosyoLabPH <span className="brand-dot" />
+          <Image src="/img/NLP LEGAL.png" alt="NegosyoLabPH Logo" width={100} height={40} />
         </a>
 
         <ul className="nav-links">
@@ -110,7 +105,6 @@ export default function Home() {
         <div className="hero-blob hero-blob-2" />
 
         <div className="hero-content">
-          <p className="eyebrow fade-up">Built for fast-moving companies</p>
 
           <h1 className="hero-title fade-up delay-100">
             Growth-driven <br />
@@ -134,14 +128,40 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Floating stat cards — hidden on smaller screens via CSS */}
-        <aside className="hero-card-group fade-in delay-400">
-          {stats.map((s) => (
-            <div key={s.label} className="stat-card">
-              <p className="stat-value">{s.value}</p>
-              <p className="stat-label">{s.label}</p>
+        {/* Abstract Hero Visual on the right */}
+        <aside className="hero-visual fade-in delay-400">
+          <div className="visual-card-wrapper">
+            <div className="visual-card v-card-1">
+              <div className="v-header">
+                <span className="v-dot" />
+                <span className="v-dot" />
+                <span className="v-dot" />
+              </div>
+              <div className="v-body">
+                <div className="v-bar v-bar-1" />
+                <div className="v-bar v-bar-2" />
+                <div className="v-bar v-bar-3" />
+              </div>
             </div>
-          ))}
+            
+            <div className="visual-card v-card-2">
+              <div className="v-icon">⚡</div>
+              <div className="v-text-group">
+                <div className="v-line v-line-bold" />
+                <div className="v-line" />
+              </div>
+            </div>
+
+            <div className="visual-card v-card-3">
+              <div className="v-chart">
+                <div className="v-chart-inner" />
+              </div>
+              <div className="v-stats">
+                <span className="v-stat-val">+42%</span>
+                <span className="v-stat-lbl">Efficiency</span>
+              </div>
+            </div>
+          </div>
         </aside>
       </section>
 
