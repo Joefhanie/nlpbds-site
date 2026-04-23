@@ -3,7 +3,7 @@
 /* ─── Brand tokens ─────────────────────────────────────────── */
 :root {
   --white:  #FFFFFF;
-  --green:  #99C83C;
+  --green:  #6ca004;
   --navy:   #192436;
   --dark-bg: #403B39;
 
@@ -798,6 +798,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-link-title {
   color: #ffffff ;
+}
+
+.footer {
+  background: var(--green);
 }
 
 /* ─── Responsive ───────────────────────────────────────────── */
