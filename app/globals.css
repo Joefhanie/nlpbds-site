@@ -59,28 +59,9 @@ h1, h2, h3, h4, h5, h6 {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes blob {
-  0%, 100% { transform: scale(1) translate(0, 0); }
-  33%       { transform: scale(1.08) translate(12px, -10px); }
-  66%       { transform: scale(0.94) translate(-8px, 14px); }
-}
-
-@keyframes shimmer {
-  from { background-position: 200% center; }
-  to   { background-position: -200% center; }
-}
-
 /* ─── Utility animations ───────────────────────────────────── */
 .fade-up {
   animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-.fade-in {
-  animation: fade-in 0.5s ease both;
 }
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
@@ -116,12 +97,6 @@ h1, h2, h3, h4, h5, h6 {
   gap: 0.4rem;
   text-decoration: none;
 }
-.brand-dot {
-  width: 8px; height: 8px;
-  background: var(--green);
-  border-radius: 50%;
-  display: inline-block;
-}
 
 .nav-links {
   display: flex;
@@ -139,9 +114,25 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 .nav-links a::after {
-  display: none;
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -4px;
+  height: 2px;
+  background: var(--green);
+  border-radius: 2px;
+  transition: right 0.22s ease;
 }
-.nav-links a:hover { color: #000000; }
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: #000000;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after {
+  right: 0;
+}
 
 /* ─── Buttons ──────────────────────────────────────────────── */
 .btn-primary {
@@ -221,49 +212,12 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden; 
 }
 
-.hero-section::after {
-  content: none !important;
-  display: none !important;
-}
-
-.hero-blob {
-  display: none;
-}
-.hero-blob-1 {
-  width: 480px; height: 480px;
-  background: rgba(153, 200, 60, 0.18);
-  top: -80px; right: -60px;
-  animation-delay: 0s;
-}
-.hero-blob-2 {
-  width: 320px; height: 320px;
-  background: rgba(25, 36, 54, 0.07);
-  bottom: 40px; left: -80px;
-  animation-delay: 3s;
-}
-
 .hero-content {
   position: relative;
   z-index: 1;
   width: 100%;
   max-width: 100%;
   margin-left: 0;
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-poppins), sans-serif;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--green-dim);
-  background: rgba(153, 200, 60, 0.1);
-  padding: 0.35rem 0.85rem;
-  border-radius: 100px;
-  border: 1px solid rgba(153, 200, 60, 0.25);
 }
 
 .hero-title {
@@ -328,45 +282,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #283347;
 }
 
-.hero-card-group {
-  position: absolute;
-  right: clamp(1.25rem, 6vw, 6rem);
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-/* ─── Stat card ────────────────────────────────────────────── */
-.stat-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.25rem 1.6rem;
-  min-width: 180px;
-  box-shadow: 0 8px 30px rgba(25, 36, 54, 0.06);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.stat-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(25, 36, 54, 0.1);
-}
-.stat-value {
-  font-family: var(--font-poppins), sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #000000;
-  line-height: 1;
-}
-.stat-label {
-  margin-top: 0.3rem;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--muted);
-}
-
 /* ─── Section wrapper ──────────────────────────────────────── */
 .section {
   padding: 5.5rem clamp(1.25rem, 6vw, 4rem);
@@ -390,13 +305,13 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   letter-spacing: -0.03em;
   color: #000000;
-  max-width: 640px;
+  max-width: 100%;
 }
 .section-sub {
   margin-top: 0.9rem;
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.6);
-  max-width: 560px;
+  max-width: 100%;
   line-height: 1.8;
 }
 
@@ -463,8 +378,8 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-/* ─── Process steps ────────────────────────────────────────── */
-.process-steps {
+/* ─── Clients grid ─────────────────────────────────────────── */
+.client-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
@@ -472,11 +387,11 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
-.process-step {
+.client-card {
   position: relative;
   display: block;
   padding: 2rem 1.75rem 1.75rem;
-  background: var(--surface);
+  background: var(--white);
   border-radius: 20px;
   border: 1px solid var(--border);
   overflow: hidden;
@@ -485,28 +400,28 @@ h1, h2, h3, h4, h5, h6 {
   transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
-.process-step:hover,
-.process-step:focus-visible {
+.client-card:hover,
+.client-card:focus-visible {
   border-color: #99C83C;
   background: #ffffff;
   box-shadow: 0 16px 34px rgba(0, 0, 0, 0.14);
 }
 
-.process-step:focus-visible {
+.client-card:focus-visible {
   outline: 2px solid var(--green);
   outline-offset: 2px;
 }
 
-.process-step:hover h3,
-.process-step:focus-visible h3 {
+.client-card:hover h3,
+.client-card:focus-visible h3 {
   color: #99C83C;
 }
 
-.process-step:hover .process-step-num,
-.process-step:focus-visible .process-step-num {
+.client-card:hover .client-card-num,
+.client-card:focus-visible .client-card-num {
   color: rgba(153, 200, 60, 0.35);
 }
-.process-step-num {
+.client-card-num {
   font-family: var(--font-poppins), sans-serif;
   font-size: 3.5rem;
   font-weight: 700;
@@ -516,14 +431,14 @@ h1, h2, h3, h4, h5, h6 {
   top: 1rem; right: 1.25rem;
   pointer-events: none;
 }
-.process-step h3 {
+.client-card h3 {
   font-size: 1.05rem;
   font-weight: 700;
   color: #000000;
   margin: 0 0 0.5rem;
   position: relative;
 }
-.process-step p {
+.client-card p {
   font-size: 0.88rem;
   color: rgba(0, 0, 0, 0.6);
   line-height: 1.75;
@@ -677,7 +592,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── Responsive ───────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .hero-card-group { display: none; }
+  .hero-title { line-height: 1.2; }
 }
 @media (max-width: 768px) {
   .nav-links { display: none; }

@@ -146,15 +146,15 @@ export default function Home() {
             content, and strategies that drive measurable results.
           </p>
 
-          <div className="process-steps">
+          <div className="client-grid">
             {clients.map((client, i) => (
               <a
                 key={client.title}
                 href="#contact"
-                className="process-step fade-up"
+                className="client-card fade-up"
                 style={{ animationDelay: `${200 + i * 100}ms` }}
               >
-                <span className="process-step-num">0{i + 1}</span>
+                <span className="client-card-num">0{i + 1}</span>
                 <h3>{client.title}</h3>
                 <p>{client.description}</p>
               </a>
