@@ -27,26 +27,6 @@ export default function Home() {
     },
   ];
 
-  const clients = [
-    {
-      title: "ArmonyX Gym",
-      description:
-        "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      title: "Just Bump",
-      description:
-        "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",},
-    {
-      title: "Just Remember",
-      description:
-        "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",},
-    {
-      title: "ERMS",
-      description:
-        "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",},
-  ];
-
   const careers = [
     {
       title: "Software Developer Intern",
@@ -63,8 +43,11 @@ export default function Home() {
   ];
 
   const [aboutSlideIndex, setAboutSlideIndex] = useState(0);
+  const [clientSlideIndex, setClientSlideIndex] = useState(0);
+  const [clientSlidesPerView, setClientSlidesPerView] = useState(4);
   const [careerSlideIndex, setCareerSlideIndex] = useState(0);
   const [aboutSlides, setAboutSlides] = useState<{ src: string; alt: string }[]>([]);
+  const [clientSlides, setClientSlides] = useState<{ src: string; alt: string }[]>([]);
   const [careerSlides, setCareerSlides] = useState<{ src: string; alt: string }[]>([]);
 
   useEffect(() => {
@@ -79,6 +62,20 @@ export default function Home() {
     };
 
     loadAboutSlides();
+  }, []);
+
+  useEffect(() => {
+    const loadClientSlides = async () => {
+      const response = await fetch('/api/client-slides');
+      if (!response.ok) {
+        return;
+      }
+
+      const data = (await response.json()) as { slides?: { src: string; alt: string }[] };
+      setClientSlides(data.slides ?? []);
+    };
+
+    loadClientSlides();
   }, []);
 
   useEffect(() => {
@@ -106,6 +103,47 @@ export default function Home() {
 
     return () => clearInterval(timer);
   }, [aboutSlides.length]);
+
+  useEffect(() => {
+    const updateClientSlidesPerView = () => {
+      if (window.innerWidth <= 768) {
+        setClientSlidesPerView(2);
+        return;
+      }
+
+      if (window.innerWidth <= 1024) {
+        setClientSlidesPerView(3);
+        return;
+      }
+
+      setClientSlidesPerView(4);
+    };
+
+    updateClientSlidesPerView();
+    window.addEventListener('resize', updateClientSlidesPerView);
+
+    return () => window.removeEventListener('resize', updateClientSlidesPerView);
+  }, []);
+
+  const clientSlidePages: { src: string; alt: string }[][] = [];
+  for (let i = 0; i < clientSlides.length; i += clientSlidesPerView) {
+    clientSlidePages.push(clientSlides.slice(i, i + clientSlidesPerView));
+  }
+
+  const safeClientSlideIndex =
+    clientSlidePages.length > 0 ? clientSlideIndex % clientSlidePages.length : 0;
+
+  useEffect(() => {
+    if (clientSlidePages.length <= 1) {
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setClientSlideIndex((prev) => (prev + 1) % clientSlidePages.length);
+    }, 4500);
+
+    return () => clearInterval(timer);
+  }, [clientSlidePages.length]);
 
   useEffect(() => {
     if (!careerSlides.length) {
@@ -166,7 +204,7 @@ export default function Home() {
         </div>
         <div className="hero-visual fade-in delay-200" aria-hidden="true">
           <Image
-            src="/img/bg_1.png"
+            src="/img/bg_3.png"
             alt="Business growth illustration"
             fill
             priority
@@ -222,19 +260,46 @@ export default function Home() {
             content, and strategies that drive measurable results.
           </p>
           
-          <div className="client-grid">
-            {clients.map((client, i) => (
-              <a
-                key={client.title}
-                href="#contact"
-                className="client-card fade-up"
-                style={{ animationDelay: `${200 + i * 100}ms` }}
+          <div className="clients-carousel fade-up delay-300">
+            <div className="clients-carousel-viewport">
+              <div
+                className="clients-carousel-track"
+                style={{ transform: `translateX(-${safeClientSlideIndex * 100}%)` }}
               >
-                <span className="client-card-num">0{i + 1}</span>
-                <h3>{client.title}</h3>
-                <p>{client.description}</p>
-              </a>
-            ))}
+                {clientSlidePages.map((page, pageIndex) => (
+                  <div
+                    key={`clients-page-${pageIndex}`}
+                    className={`clients-carousel-page cols-${clientSlidesPerView}`}
+                  >
+                    {page.map((slide) => (
+                      <div key={slide.src} className="client-logo-item">
+                        <Image
+                          src={slide.src}
+                          alt={slide.alt}
+                          fill
+                          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                          className="client-logo-image"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {clientSlidePages.length > 1 && (
+              <div className="clients-dots" role="tablist" aria-label="Clients carousel">
+                {clientSlidePages.map((_, i) => (
+                  <button
+                    key={`clients-dot-${i}`}
+                    type="button"
+                    className={`clients-dot${i === safeClientSlideIndex ? " active" : ""}`}
+                    onClick={() => setClientSlideIndex(i)}
+                    aria-label={`Show client logos ${i + 1}`}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
