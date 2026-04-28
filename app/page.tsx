@@ -31,7 +31,7 @@ export default function Home() {
     {
       title: "Software Developer Intern",
       description:
-        "Collaborate with our development team to build and enhance web applications.",
+        "Collaborate with our development team to build and enhance client applications.",
     },
     {
       title: "QA Tester Intern",
