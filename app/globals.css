@@ -456,6 +456,11 @@ h1, h2, h3, h4, h5, h6 {
   max-width: calc((100% - 2.7rem) / 4);
 }
 
+.clients-carousel-page.cols-5 .client-logo-item {
+  flex: 0 0 calc((100% - 3.6rem) / 5);
+  max-width: calc((100% - 3.6rem) / 5);
+}
+
 .clients-carousel-page.cols-3 .client-logo-item {
   flex: 0 0 calc((100% - 1.8rem) / 3);
   max-width: calc((100% - 1.8rem) / 3);

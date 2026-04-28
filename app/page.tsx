@@ -44,7 +44,7 @@ export default function Home() {
 
   const [aboutSlideIndex, setAboutSlideIndex] = useState(0);
   const [clientSlideIndex, setClientSlideIndex] = useState(0);
-  const [clientSlidesPerView, setClientSlidesPerView] = useState(4);
+  const [clientSlidesPerView, setClientSlidesPerView] = useState(5);
   const [careerSlideIndex, setCareerSlideIndex] = useState(0);
   const [aboutSlides, setAboutSlides] = useState<{ src: string; alt: string }[]>([]);
   const [clientSlides, setClientSlides] = useState<{ src: string; alt: string }[]>([]);
@@ -112,11 +112,11 @@ export default function Home() {
       }
 
       if (window.innerWidth <= 1024) {
-        setClientSlidesPerView(3);
+        setClientSlidesPerView(4);
         return;
       }
 
-      setClientSlidesPerView(4);
+      setClientSlidesPerView(5);
     };
 
     updateClientSlidesPerView();
@@ -277,7 +277,7 @@ export default function Home() {
                           src={slide.src}
                           alt={slide.alt}
                           fill
-                          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
                           className="client-logo-image"
                         />
                       </div>
