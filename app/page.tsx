@@ -31,17 +31,17 @@ export default function Home() {
     {
       title: "Software Developer Intern",
       description:
-        "Collaborate with our development team to build and enhance web applications using React and Next.js. You'll assist with coding, debugging, and implementing features while learning TypeScript, component design, and deployment workflows.",
+        "Collaborate with our development team to build and enhance web applications.",
     },
     {
       title: "QA Tester Intern",
       description:
-        "Support quality assurance by writing and executing test cases, logging defects, and verifying fixes across web and mobile projects. Gain experience with manual testing, test plans, and basic test automation practices.",
+        "Support quality assurance by writing and executing test cases, logging defects, and verifying fixes across web and mobile projects.",
     },
     {
       title: "Multimedia Production Intern",
       description:
-        "Help create and edit visual and audio content for digital campaigns — including shooting, motion graphics, and post-production. Learn hands-on skills with Adobe Creative Suite and storytelling for social and web platforms.",
+        "Learn hands-on skills with Adobe Creative Suite and storytelling for social and web platforms.",
     },
   ];
 
