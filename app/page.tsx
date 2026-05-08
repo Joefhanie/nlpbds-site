@@ -21,23 +21,23 @@ export default function Home() {
     },
     {
       icon: FaGift,
-      title: "Business and Corporate Merchandise",
+      title: "Digital Activation and Corporate Merchandise",
       description:
-        "Stand out in the corporate world with our bespoke business and corporate merchandise. From branded promotional items to corporate gifts, we provide a range of customizable merchandise solutions that not only elevate your brand image but also leave a lasting impression on clients, partners, and stakeholders.",
+        "Boost your brand presence through engaging digital activations and high-quality corporate merchandise solutions. From marketing campaigns, event activations, and brand engagement strategies to customized promotional items and corporate giveaways, we help businesses create meaningful connections with their audience while leaving a lasting brand impression.",
     },
   ];
 
   const careers = [
-    {
-      title: "Software Developer Intern",
-      description:
-        "Collaborate with our development team to build and enhance client applications.",
-    },
-    {
-      title: "QA Tester Intern",
-      description:
-        "Support quality assurance by writing and executing test cases, logging defects, and verifying fixes across web and mobile projects.",
-    },
+    // {
+    //   title: "Software Developer Intern",
+    //   description:
+    //     "Collaborate with our development team to build and enhance client applications.",
+    // },
+    // {
+    //   title: "QA Tester Intern",
+    //   description:
+    //     "Support quality assurance by writing and executing test cases, logging defects, and verifying fixes across web and mobile projects.",
+    // },
     {
       title: "Multimedia Production Intern",
       description:
@@ -193,7 +193,7 @@ export default function Home() {
 
           <h1 className="hero-title fade-up delay-100">
             Simple steps to start and grow<br />
-            your business with <span className="highlight">NegosyoLab PH!</span>
+            your business with <span className="highlight">NLP</span>
           </h1>
 
           <p className="hero-sub fade-up delay-200">
