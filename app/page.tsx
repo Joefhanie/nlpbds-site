@@ -165,7 +165,13 @@ export default function Home() {
       {/* ── Navbar ─────────────────────────────────────────── */}
       <nav className={`navbar`}>
         <a href="#home" className="brand">
-          <Image src="/img/NLP LEGAL.png" alt="NegosyoLabPH Logo" width={150} height={90} />
+          <Image
+            src="/img/NLP LEGAL.png"
+            alt="NegosyoLabPH Logo"
+            width={150}
+            height={90}
+            loading="eager"
+          />
         </a>
 
         <ul className="nav-links">
