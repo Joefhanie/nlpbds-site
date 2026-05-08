@@ -36,7 +36,10 @@ export default function RootLayout({
       lang="en"
       className={`${nunito.variable} ${poppins.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-white text-navy">
+      <body
+        suppressHydrationWarning
+        className="min-h-full flex flex-col bg-white text-navy"
+      >
         {children}
       </body>
     </html>
