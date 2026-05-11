@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Footer } from "../../components/footer";
 import { getServiceBySlug, services } from "../service-data";
 
 export function generateStaticParams() {
@@ -90,6 +91,7 @@ export default function ServiceDetailPage({
           </aside>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }

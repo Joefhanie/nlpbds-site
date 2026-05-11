@@ -23,8 +23,8 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="footer py-16">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <footer className="footer">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-1 flex items-center">
@@ -97,7 +97,9 @@ export function Footer() {
             </ul>
           </div>
         </div>
-
+      </div>
+      <div className="site-footer text-center">
+        <p>© 2026 NLP Business Development Services.</p>
       </div>
     </footer>
   );

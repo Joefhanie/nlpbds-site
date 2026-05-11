@@ -429,9 +429,6 @@ export default function Home() {
 
       {/* ── Footer ─────────────────────────────────────────── */}
       <Footer />
-        <footer className="site-footer text-center">
-          <p>© 2026 NLP Business Development Services.</p>
-        </footer>
     </>
   );
 }
