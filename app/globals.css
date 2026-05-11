@@ -394,9 +394,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .service-image {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #ffffff;
+}
+
+.service-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(180deg, rgba(8, 10, 14, 0) 40%, rgba(8, 10, 14, 0.72) 100%);
+  opacity: 0;
+  transition: opacity 0.22s ease;
 }
 
 .service-image-img {
@@ -404,29 +414,37 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .service-card:hover .service-image-img {
-  transform: scale(1.04);
-  filter: saturate(1.02);
+  transform: scale(1.06);
+  filter: saturate(1.05) brightness(0.9);
+}
+
+.service-card:hover .service-image::after,
+.service-card-link:focus-visible .service-image::after {
+  opacity: 1;
 }
 
 .service-card-title {
+  position: absolute;
+  left: 1.1rem;
+  right: 1.1rem;
+  bottom: 1rem;
+  z-index: 3;
   margin: 0;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(-6px);
-  display: block;
   padding: 0;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #000000;
-  transition: opacity 0.22s ease, transform 0.22s ease, max-height 0.22s ease, padding 0.22s ease, margin 0.22s ease;
+  max-width: 86%;
+  font-size: clamp(1.05rem, 1.2vw, 1.35rem);
+  line-height: 1.15;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease;
 }
 
 .service-card:hover .service-card-title,
 .service-card-link:focus-visible .service-card-title {
-  max-height: 4rem;
-  margin-bottom: 0.75rem;
-  padding: 0.55rem 0 0;
   opacity: 1;
   transform: translateY(0);
 }

@@ -32,9 +32,9 @@ export function ServiceGrid({
                 className="service-image-img"
                 style={{ objectFit: "cover", objectPosition: "center" }}
               />
+              <h3 className="service-card-title">{service.cardTitle ?? service.title}</h3>
             </div>
             <div className="service-copy">
-              <h3 className="service-card-title">{service.cardTitle ?? service.title}</h3>
               <p>{service.description}</p>
             </div>
           </article>
