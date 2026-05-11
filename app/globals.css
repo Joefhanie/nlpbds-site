@@ -372,6 +372,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .service-card {
+  display: flex;
+  flex-direction: column;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 22px;
@@ -406,41 +408,40 @@ h1, h2, h3, h4, h5, h6 {
   filter: saturate(1.02);
 }
 
-.service-copy {
-  position: relative;
-  z-index: 2;
-  margin-top: -3.6rem;
-  padding: 0 1.5rem 1.45rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.service-copy h3 {
-  display: flex;
-  align-items: center;
-  margin: 0 0 0.75rem;
-  min-height: 3.25rem;
-  padding: 0.55rem 0.9rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 10px 28px rgba(25, 36, 54, 0.1);
+.service-card-title {
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  display: block;
+  padding: 0 1rem;
   font-size: 1rem;
   font-weight: 700;
   color: #000000;
-  max-width: 100%;
+  transition: opacity 0.22s ease, transform 0.22s ease, max-height 0.22s ease, padding 0.22s ease, margin 0.22s ease;
+}
+
+.service-card:hover .service-card-title,
+.service-card-link:focus-visible .service-card-title {
+  max-height: 4rem;
+  margin-bottom: 0.75rem;
+  padding: 0.55rem 1rem 0;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-copy {
+  position: relative;
+  z-index: 2;
+  padding: 1rem 1.5rem 1.45rem;
 }
 
 .service-copy p {
   margin: 0;
-  padding: 1rem 1rem 0;
   color: rgba(0, 0, 0, 0.66);
   font-size: 0.92rem;
   line-height: 1.75;
-  background: var(--white);
-  border-radius: 18px;
-  border: 1px solid rgba(228, 233, 240, 0.9);
-  box-shadow: 0 14px 30px rgba(25, 36, 54, 0.05);
 }
 
 /* ─── Service detail pages ────────────────────────────────── */

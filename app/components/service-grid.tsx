@@ -34,7 +34,7 @@ export function ServiceGrid({
               />
             </div>
             <div className="service-copy">
-              <h3>{service.cardTitle ?? service.title}</h3>
+              <h3 className="service-card-title">{service.cardTitle ?? service.title}</h3>
               <p>{service.description}</p>
             </div>
           </article>
