@@ -415,7 +415,7 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0;
   transform: translateY(-6px);
   display: block;
-  padding: 0 1rem;
+  padding: 0;
   font-size: 1rem;
   font-weight: 700;
   color: #000000;
@@ -426,7 +426,7 @@ h1, h2, h3, h4, h5, h6 {
 .service-card-link:focus-visible .service-card-title {
   max-height: 4rem;
   margin-bottom: 0.75rem;
-  padding: 0.55rem 1rem 0;
+  padding: 0.55rem 0 0;
   opacity: 1;
   transform: translateY(0);
 }
