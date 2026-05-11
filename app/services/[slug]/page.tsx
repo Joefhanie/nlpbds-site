@@ -45,7 +45,7 @@ export default function ServiceDetailPage({
         <div className="service-detail-inner">
           <div className="service-detail-copy">
             <Link href="/services" className="service-back-link fade-up">
-              {"&larr; Back to Services"}
+              {"← Back to Services"}
             </Link>
             <h1 className="service-detail-title fade-up delay-100">{service.title}</h1>
             <p className="service-detail-lead fade-up delay-200">{service.pageIntro}</p>
