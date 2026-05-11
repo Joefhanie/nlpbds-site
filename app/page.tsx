@@ -2,42 +2,22 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { FaCode, FaGift, FaVideo } from "react-icons/fa";
 import { Footer } from "./components/footer";
+import { ServiceGrid } from "./components/service-grid";
+import { services } from "./services/service-data";
 
 export default function Home() {
-  const services = [
-    {
-      icon: FaCode,
-      title: "Business Solutions (Software Development)",
-      description:
-        "Unlock the full potential of your business with our cutting-edge software development solutions. Tailored to address the unique needs of your enterprise, our business solutions are crafted to enhance efficiency, streamline operations, and keep you ahead in the competitive Philippine market.",
-    },
-    {
-      icon: FaVideo,
-      title: "Digital Media, Audio, and Video Production",
-      description:
-        "Make a lasting impression with our top-notch digital media, audio, and video production services. From compelling visual content to engaging audio experiences, our team of seasoned professionals is dedicated to bringing your brand to life, ensuring a captivating and memorable presence in the digital realm.",
-    },
-    {
-      icon: FaGift,
-      title: "Business and Corporate Merchandise",
-      description:
-        "Stand out in the corporate world with our bespoke business and corporate merchandise. From branded promotional items to corporate gifts, we provide a range of customizable merchandise solutions that not only elevate your brand image but also leave a lasting impression on clients, partners, and stakeholders.",
-    },
-  ];
-
   const careers = [
-    {
-      title: "Software Developer Intern",
-      description:
-        "Collaborate with our development team to build and enhance client applications.",
-    },
-    {
-      title: "QA Tester Intern",
-      description:
-        "Support quality assurance by writing and executing test cases, logging defects, and verifying fixes across web and mobile projects.",
-    },
+    // {
+    //   title: "Software Developer Intern",
+    //   description:
+    //     "Collaborate with our development team to build and enhance client applications.",
+    // },
+    // {
+    //   title: "QA Tester Intern",
+    //   description:
+    //     "Support quality assurance by writing and executing test cases, logging defects, and verifying fixes across web and mobile projects.",
+    // },
     {
       title: "Multimedia Production Intern",
       description:
@@ -47,7 +27,7 @@ export default function Home() {
 
   const [aboutSlideIndex, setAboutSlideIndex] = useState(0);
   const [clientSlideIndex, setClientSlideIndex] = useState(0);
-  const [clientSlidesPerView, setClientSlidesPerView] = useState(5);
+  const [clientSlidesPerView, setClientSlidesPerView] = useState(8);
   const [careerSlideIndex, setCareerSlideIndex] = useState(0);
   const [aboutSlides, setAboutSlides] = useState<{ src: string; alt: string }[]>([]);
   const [clientSlides, setClientSlides] = useState<{ src: string; alt: string }[]>([]);
@@ -119,7 +99,7 @@ export default function Home() {
         return;
       }
 
-      setClientSlidesPerView(5);
+      setClientSlidesPerView(8);
     };
 
     updateClientSlidesPerView();
@@ -193,7 +173,7 @@ export default function Home() {
 
           <h1 className="hero-title fade-up delay-100">
             Simple steps to start and grow<br />
-            your business with <span className="highlight">NegosyoLab PH!</span>
+            your business with <span className="highlight">NLP!</span>
           </h1>
 
           <p className="hero-sub fade-up delay-200">
@@ -213,7 +193,7 @@ export default function Home() {
         </div>
         <div className="hero-visual fade-in delay-200" aria-hidden="true">
           <Image
-            src="/img/bg_3.png"
+            src="/img/hero.png"
             alt="Business growth illustration"
             fill
             priority
@@ -226,30 +206,15 @@ export default function Home() {
       {/* ── Services ───────────────────────────────────────── */}
       <section className="section" id="services">
         <div className="section-inner">
-          <p className="section-label fade-up">What We Do</p>
+          <p className="section-label fade-up">WHAT WE DO</p>
           <h2 className="section-title fade-up delay-100">
             Our Services
           </h2>
           <p className="section-sub fade-up delay-200">
-            Explore our core offerings designed to strengthen your business and
-            elevate your brand presence.
+            Full-scale multimedia production for corporate events, personal occasions, and brand campaigns — delivered by a professional team with broadcast-grade equipment.
           </p>
 
-          <div className="services-grid">
-            {services.map((s, i) => (
-              <article
-                key={s.title}
-                className="service-card fade-up"
-                style={{ animationDelay: `${200 + i * 80}ms` }}
-              >
-                <div className="service-icon">
-                  <s.icon />
-                </div>
-                <h3>{s.title}</h3>
-                <p>{s.description}</p>
-              </article>
-            ))}
-          </div>
+          <ServiceGrid services={services} />
         </div>
       </section>
 
@@ -286,7 +251,7 @@ export default function Home() {
                           src={slide.src}
                           alt={slide.alt}
                           fill
-                          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 12.5vw"
                           className="client-logo-image"
                         />
                       </div>
@@ -295,6 +260,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
+          
 
             {clientSlidePages.length > 1 && (
               <div className="clients-dots" role="tablist" aria-label="Clients carousel">
