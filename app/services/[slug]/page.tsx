@@ -74,19 +74,19 @@ export default function ServiceDetailPage({
           <article className="service-detail-panel">
             <h2>What’s included</h2>
             <ul className="service-detail-list">
-              {service.highlights.map((item) => (
+              {service.includes.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
           </article>
 
           <article className="service-detail-panel service-detail-panel--accent">
-            <h2>How we work</h2>
-            <ol className="service-detail-steps">
-              {service.workflow.map((step) => (
-                <li key={step}>{step}</li>
+            <h2>Perfect for</h2>
+            <ul className="service-detail-list">
+              {service.perfectFor.map((item) => (
+                <li key={item}>{item}</li>
               ))}
-            </ol>
+            </ul>
           </article>
         </div>
       </section>

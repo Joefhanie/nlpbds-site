@@ -5,6 +5,8 @@ export const digitalMediaSolutions = {
   title: "Digital Media, Audio, and Video Production",
   subtitle:
     "Polished visual and audio production for campaigns, events, and brand storytelling.",
+  pageIntro:
+    "Make a lasting impression with our top-notch digital media, audio, and video production services. From compelling visual content to engaging audio experiences, our team of seasoned professionals is dedicated to bringing your brand to life, ensuring a captivating and memorable presence in the digital realm.",
   image: "/img/bg_3.png",
   imageAlt: "Digital media and video production illustration",
   description:

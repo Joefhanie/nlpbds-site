@@ -3,6 +3,7 @@ export type ServicePage = {
   title: string;
   cardTitle?: string;
   subtitle: string;
+  pageIntro: string;
   image: string;
   imageAlt: string;
   description: string;

@@ -6,6 +6,8 @@ export const businessSolutions = {
   cardTitle: "Business Solutions (Software Development)",
   subtitle:
     "Systems that simplify operations, keep teams aligned, and reduce the manual work slowing your business down.",
+  pageIntro:
+    "Unlock the full potential of your business with our cutting-edge software development solutions. Tailored to address the unique needs of your enterprise, our business solutions are crafted to enhance efficiency, streamline operations, and keep you ahead in the competitive Philippine market.",
   image: "/img/carousel/careers/1.jpeg",
   imageAlt: "Business solutions software development illustration",
   description:
