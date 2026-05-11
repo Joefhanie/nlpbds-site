@@ -7,7 +7,7 @@ export const digitalActivationAndCorporateMerchandise = {
     "Campaign activations and branded materials that help your audience remember the experience.",
   pageIntro:
     "Boost your brand presence through engaging digital activations and high-quality corporate merchandise solutions. From marketing campaigns, event activations, and brand engagement strategies to customized promotional items and corporate giveaways, we help businesses create meaningful connections with their audience while leaving a lasting brand impression.",
-  image: "/img/carousel/careers/4.jpeg",
+  image: "/img/services/digital-activation.png",
   imageAlt: "Digital activation and corporate merchandise illustration",
   description:
     "Boost your brand presence through engaging digital activations and high-quality corporate merchandise solutions. From marketing campaigns, event activations, and brand engagement strategies to customized promotional items and corporate giveaways, we help businesses create meaningful connections with their audience while leaving a lasting brand impression.",
