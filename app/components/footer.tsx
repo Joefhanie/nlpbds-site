@@ -3,9 +3,9 @@ import Image from 'next/image';
 
 const footerLinks = {
   services: [
-    { label: 'Business Solutions', href: '#services' },
-    { label: 'Digital Media, Audio, and Video Production', href: '#services' },
-    { label: 'Business and Corporate Merchandise', href: '#services' },
+    { label: 'Business Solutions', href: '/services?service=business-solutions' },
+    { label: 'Digital Media, Audio, and Video Production', href: '/services?service=digital-media' },
+    { label: 'Digital Activation and Corporate Merchandise', href: '/services?service=corporate-merchandise' },
   ],
   company: [
     { label: 'Home', href: '#home' },
